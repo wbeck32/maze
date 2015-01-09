@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+var correctMaze = ['n','e'];
+var maze = require('commander');
+var prompt = require('prompt');
+
+prompt.start();
+
+takeThisStep(0);
+
+function takeThisStep(index) {
+	//starts at array[index]
+	//prompts user to enter step
+	prompt.get(['direction'], function(err,result){
+		var direction = result.direction;
+		response(index,direction);
+
+	});
+	//calls response(index, direction)
+}
+
+function takeNextStep(index){
+	prompt.get(['direction'], function(err,result){
+		var direction = result.direction;
+		response(index,direction);
+
+	});
+}
+
+function mazeEscape() {
+	console.log('inmazeescape');
+//end the game
+//closing message
+//exit
+}
+
+function response(index,direction) {
+	console.log(index,direction);
+
+	if(direction === correctMaze[index]){
+		console.log("Great progress so far!");
+		if(index === correctMaze.length - 1) {
+			mazeEscape();
+		} else {
+			takeNextStep(index + 1);
+		}
+			//respond to the user
+	//add one to the index
+	//if index = length, then call mazeEscape()
+	//call takeNextStep(index)
+	}
+	
+	else {
+console.log('you suck');		//call 
+takeThisStep(index);
+	}	
+
+}
+
